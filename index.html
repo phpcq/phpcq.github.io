@@ -1,0 +1,382 @@
+---
+layout: default
+---
+
+<header class="site-header page">
+  <div class="row align-center">
+    <div class="column small-8 text-center">
+      <figure>
+        <img src="https://phpcq.github.io/logo/phpcq.svg" width="256"/>
+        <figcaption>
+          <h1>PHP Code Quality Project</h1>
+        </figcaption>
+      </figure>
+
+      <p>Your toolchain for better code!</p>
+      <a href="#about" class="next-anchor"><i class="fa fa-5x fa-angle-double-down"></i></a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <article class="page" id="about" data-magellan-target="about">
+    <div class="row">
+      <div class="column small-12 text-center extra-space">
+        <h2>About</h2>
+        <p>The PHP Code Quality Project is a collection of ANT/Phing Tasks to integrate certain build tools.</p>
+      </div>
+    </div>
+
+    <div class="row small-up-1 medium-up-2 large-up-3 align-center">
+      <div class="column extra-space">
+        <i class="fa fa-bug fa-icon"></i>
+        <h3 class="text-center">Keep your app stable</h3>
+        <p class="text-center">Integrate phpunit, phpspec, ... to keep your code free from bug and vulnerability.</p>
+      </div>
+      <div class="column extra-space">
+        <i class="fa fa-heartbeat fa-icon"></i>
+        <h3 class="text-center">Be clean and bloodless</h3>
+        <p class="text-center">Integrate phpcs, phpmd, ... to keep your code free from mess and blood.</p>
+      </div>
+      <div class="column extra-space">
+        <i class="fa fa-gears fa-icon"></i>
+        <h3 class="text-center">Integrate build tools</h3>
+        <p class="text-center">PHPCQ support a lot of tools e.g. phpunit, phpmd, phploc, phpcpd &hellip; more are on their way!</p>
+      </div>
+      <div class="column extra-space">
+        <i class="fa fa-child fa-icon"></i>
+        <h3 class="text-center">Easy to setup, easy to run</h3>
+        <p class="text-center">Install through composer, runs with ANT or Phing.</p>
+      </div>
+      <div class="column extra-space">
+        <i class="fa fa-fighter-jet fa-icon"></i>
+        <h3 class="text-center">Runs everywhere!</h3>
+        <p class="text-center">Like your local machine, your Gitlab CI or any hosted CI like Travis.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="page" id="quickstart" data-magellan-target="quickstart">
+    <div class="row">
+      <div class="column small-12 text-center extra-space">
+        <h2>QuickStart</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column small-12">
+        <h3>Installing</h3>
+        <p>PHPCQ can be installed with a set of recommended tasks or with a custom selection of tasks.</p>
+
+        <ul class="tabs" data-tabs id="installing-tabs">
+          <li class="tabs-title is-active"><a href="#install-all-tasks" aria-selected="true">All Tasks</a></li>
+          <li class="tabs-title"><a href="#install-custom-tasks">Custom Tasks</a></li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="installing-tabs">
+          <div class="tabs-panel is-active" id="install-all-tasks">
+            <p class="callout warning">You need to install and setup <a href="https://getcomposer.org" target="_blank">composer</a> first!</p>
+{% highlight shell %}
+$ composer require --dev phpcq/all-tasks
+{% endhighlight %}
+            <p>This installs the following tools for you:</p>
+            <ul>
+              <li><a href="https://github.com/phpcq/author-validation" target="_blank">author-validation</a></li>
+              <li><a href="https://github.com/phpcq/autoload-validation" target="_blank">autoload-validation</a></li>
+              <li><a href="branch-alias-validation" target="_blank">branch-alias-validation</a></li>
+              <li><a href="https://github.com/phpcq/coding-standard" target="_blank">coding-standard</a></li>
+              <li><a href="https://github.com/phpcq/travis-configuration-check" target="_blank">travis-configuration-check</a></li>
+              <li><a href="https://pdepend.org/" target="_blank">pdepend</a></li>
+              <li><a href="https://phpunit.de/" target="_blank">phpunit</a></li>
+              <li><a href="https://github.com/sebastianbergmann/phpcpd" target="_blank">phpcpd</a></li>
+              <li><a href="https://github.com/sebastianbergmann/phploc" target="_blank">phploc</a></li>
+              <li><a href="https://phpmd.org/" target="_blank">phpmd</a></li>
+              <li><a href="http://www.phpspec.net/" target="_blank">phpspec</a></li>
+            </ul>
+            <p>Thats all! You can now continue configure you build.</p>
+          </div>
+
+          <div class="tabs-panel" id="install-custom-tasks">
+            <p class="callout warning">You need to install and setup <a href="https://getcomposer.org" target="_blank">composer</a> first!</p>
+{% highlight shell %}
+$ composer require --dev phpcq/phpcq
+{% endhighlight %}
+            <p>Now install the build tools you want to use.</p>
+{% highlight shell %}
+$ composer require --dev phpcq/author-validation
+$ composer require --dev phpcq/autoload-validation
+$ composer require --dev phpcq/branch-alias-validation
+$ composer require --dev phpcq/coding-standard
+$ composer require --dev phpcq/travis-configuration-check
+$ composer require --dev pdepend/pdepend
+$ composer require --dev phpunit/phpunit
+$ composer require --dev sebastian/phpcpd
+$ composer require --dev phploc/phploc
+$ composer require --dev phpmd/phpmd
+$ composer require --dev phpspec/phpspec
+{% endhighlight %}
+            <p>Thats all! You can now continue configure you build.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="column small-12">
+        <h3>Configuring</h3>
+
+        <ul class="tabs" data-tabs id="configuring-tabs">
+          <li class="tabs-title is-active"><a href="#configure-from-scratch" aria-selected="true">Start from scratch</a></li>
+          <li class="tabs-title"><a href="#configure-into-existing-build-file">Integrate into existing <code>build.xml</code></a></li>
+          <li class="tabs-title"><a href="#configure-customize-executed-tasks">Customize executed tasks</a></li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="configuring-tabs">
+          <div class="tabs-panel is-active" id="configure-from-scratch">
+            <p>Create a <code>build.xml</code> in the root of your project.</p>
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="my-project" default="build" description="Automated build of my project">
+    <!-- import the main tasks -->
+    <import file="vendor/phpcq/phpcq/phpcq.main.xml" />
+</project>
+{% endhighlight %}
+            <p>Thats all! You can now continue running your build.</p>
+          </div>
+
+          <div class="tabs-panel" id="configure-into-existing-build-file">
+            <p>Import the <code>vendor/phpcq/phpcq/phpcq.main.xml</code> in your <code>build.xml</code>,
+              then call the <code>verify</code> and/or <code>analyse</code> target.</p>
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="my-project" default="run" description="My project runner">
+    <!-- import the main tasks -->
+    <import file="vendor/phpcq/phpcq/phpcq.main.xml" />
+
+    <target name="run"
+            depends="verify, analyse">
+        <!-- the verify target runs all validations,
+             the analyse target runs all analyses -->
+
+        ...
+    </target>
+</project>
+{% endhighlight %}
+            <p>Thats all! You can now continue running your build.</p>
+          </div>
+
+          <div class="tabs-panel" id="configure-customize-executed-tasks">
+            <p>Import the <code>vendor/phpcq/phpcq/phpcq.main.xml</code> in your <code>build.xml</code>,
+              then call the phpcq tasks you like.</p>
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="my-project" default="run" description="My project runner">
+    <!-- import the main tasks -->
+    <import file="vendor/phpcq/phpcq/phpcq.main.xml" />
+
+    <target name="run"
+            depends="
+                phplint,
+                composer-validate,
+                autoload-validation,
+                author-validation,
+                phploc,
+                pdepend,
+                phpmd,
+                phpcs,
+                phpcpd,
+                phpunit,
+                phpspec,
+                branch-alias-validation,
+                travis-configuration-check
+            ">
+        <!-- remove the tasks you don't want to be executed -->
+
+        ...
+    </target>
+</project>
+{% endhighlight %}
+            <p>Thats all! You can now continue running your build.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="column small-12">
+        <h3>Running</h3>
+
+        <ul class="tabs" data-tabs id="running-tabs">
+          <li class="tabs-title is-active"><a href="#running-with-ant" aria-selected="true">ANT</a></li>
+          <li class="tabs-title"><a href="#running-with-phing">Phing</a></li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="running-tabs">
+          <div class="tabs-panel is-active" id="running-with-ant">
+            <p>First of all, you need to <a href="http://ant.apache.org/manual/install.html" target="_blank">install
+              ANT</a>. Most distributions and CI services comes with a package or preinstalled version of ANT.
+              If ANT is installed, you can run your build with:</p>
+{% highlight shell %}
+$ ant -keep-going
+{% endhighlight %}
+            <p>Thats all! You can now continue running your build.</p>
+          </div>
+
+          <div class="tabs-panel" id="running-with-phing">
+            <p class="callout alert">The Phing support is very experimental and may not work as expected, sorry &#x2639;</p>
+            <p>First of all, you need to install phing:</p>
+{% highlight shell %}
+$ composer require --dev phing/phing
+{% endhighlight %}
+            <p>Now you can run your build with:</p>
+{% highlight shell %}
+$ ./vendor/bin/phing -keep-going
+{% endhighlight %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="page" id="tasks" data-magellan-target="tasks">
+    <div class="row">
+      <div class="column small-12 text-center extra-space">
+        <h2>Tasks</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column small-12">
+        <ul class="accordion" data-accordion data-allow-all-closed="true">
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">author-validation</a>
+            <div class="accordion-content" data-tab-content>
+              <span class="label float-right">powered by phpcq</span>
+
+              <p>This task executes <a href="https://github.com/phpcq/author-validation" target="_blank">author-validation</a>
+                on your code base.</p>
+
+              <p>Ensure that all authors (from git history) mentioned in all PHP files, the <code>composer.json</code>,
+                <code>bower.json</code> and <code>packages.json</code>.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">autoload-validation</a>
+            <div class="accordion-content" data-tab-content>
+              <span class="label float-right">powered by phpcq</span>
+
+              <p>This task executes <a href="https://github.com/phpcq/autoload-validation" target="_blank">autoload-validation</a>
+                on your code base.</p>
+
+              <p>Ensure that all classes covered by the defined autoload information in the
+                <code>composer.json</code>.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">branch-alias-validation</a>
+            <div class="accordion-content" data-tab-content>
+              <span class="label float-right">powered by phpcq</span>
+
+              <p>This task executes <a href="https://github.com/phpcq/branch-alias-validation" target="_blank">branch-alias-validation</a>
+                on your code base.</p>
+
+              <p>Ensure that no branch alias in the <code>composer.json</code> is "behind" the most recent tag on the
+                given branch for the alias.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">composer-validate</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <code>composer validate</code>.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">pdepend</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="https://pdepend.org/" target="_blank">pdepend</a> on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phpcpd</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="https://github.com/sebastianbergmann/phpcpd" target="_blank">phpcpd</a>
+                on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phpcs</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="https://github.com/squizlabs/PHP_CodeSniffer" target="_blank">phpcs</a>
+                on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phplint</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <code>php</code> in lint mode on your project.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phploc</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="https://github.com/sebastianbergmann/phploc" target="_blank">phploc</a>
+                on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phpmd</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="http://phpmd.org/" target="_blank">phpmd</a> on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phpspec</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="http://www.phpspec.net/" target="_blank">phpspec</a> on you code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">phpunit</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="https://phpunit.de/" target="_blank">phpunit</a>
+                on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">sonarqube</a>
+            <div class="accordion-content" data-tab-content>
+              <p>This task executes <a href="http://docs.sonarqube.org/display/SONAR/Analyzing+Source+Code" target="_blank">sonarqube scanner</a>
+                on your code base.</p>
+            </div>
+          </li>
+
+          <li class="accordion-item" data-accordion-item>
+            <a href="#" class="accordion-title">travis-configuration-check</a>
+            <div class="accordion-content" data-tab-content>
+              <span class="label float-right">powered by phpcq</span>
+
+              <p>This task executes <a href="https://github.com/phpcq/travis-configuration-check" target="_blank">travis-configuration-check</a>
+                on your repository.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </article>
+</main>

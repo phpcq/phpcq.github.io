@@ -1,0 +1,13 @@
+title: PHP Code Quality Project
+description: The PHP Code Quality Project helps developers to integrate certain tools into their build chain.
+url: "http://phpcq.github.io"
+github_username:  phpcq
+
+# github presets
+lsi: false
+safe: true
+source: .
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
