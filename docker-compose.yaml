@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  mkdocs:
+    image: 'squidfunk/mkdocs-material'
+    user: "${UID}:${GID}"
+    ports:
+      - '8000:8000'
+    volumes:
+      - ${PROJECT_DIR}:/docs
+    restart: always

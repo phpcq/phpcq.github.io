@@ -1,0 +1,4 @@
+/.bundle/*
+/gemfiles/*
+/.jekyll-cache/*
+/site

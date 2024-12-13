@@ -1,0 +1,99 @@
+#Project info
+site_name: phpcq project
+site_description: "phpcq: PHP code quality"
+site_url: https://phpcq.github.io/
+site_author: "phpcq team"
+
+#Repository
+repo_name: 'phpcq/phpcq'
+repo_url: 'https://github.com/phpcq/phpcq'
+edit_uri: 'https://github.com/phpcq/phpcq.github.io/doc'
+
+#Copyright
+copyright: 'phpcq is licensed under <a href="https://github.com/phpcq/phpcq/blob/master/LICENSE">MIT license</a>'
+
+#Document directory
+docs_dir: doc
+
+## Social Media
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/phpcq
+
+#Configuration
+theme:
+  name: material
+  logo: assets/img/logo.svg
+  favicon: assets/img/logo.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    primary: black
+    accent: grey
+  features:
+    - content.code.annotate
+    - content.code.copy
+    - navigation.indexes
+    - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - toc.integrate
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - assets/style.css
+
+nav:
+  - 'phpcq &lt;tl/dr&gt;': index.md
+  - 'Quickstart':
+    - quick-start/index.md
+    - 'Installation': quick-start/installation.md
+    - 'Configuration': quick-start/configuration.md
+    - 'Usage': quick-start/usage.md
+    - 'Update': quick-start/update.md
+  - Documentation:
+    - 'phpcq.yaml.dist reference': phpcq-yaml-reference.md
+    - 'command reference':
+          - command-reference/index.md
+          - 'global options': 'command-reference/global-options.md'
+          - 'completion': 'command-reference/completion.md'
+          - 'exec': 'command-reference/exec.md'
+          - 'install': 'command-reference/install.md'
+          - 'platform-information': 'command-reference/platform-information.md'
+          - 'run': 'command-reference/run.md'
+          - 'self-update': 'command-reference/self-update.md'
+          - 'update': 'command-reference/update.md'
+          - 'validate': 'command-reference/validate.md'
+  - 'Plugins':
+    - plugins/index.md
+    - 'Official plugins':
+      - box: plugins/box.md
+      - composer-normalize: plugins/composer-normalize.md
+      - composer-require-checker: plugins/composer-require-checker.md
+      - phpcpd: plugins/phpcpd.md
+      - phpcs: plugins/phpcs.md
+      - phploc: plugins/phploc.md
+      - phpmd: plugins/phpmd.md
+      - phpunit: plugins/phpunit.md
+      - psalm: plugins/psalm.md
+    - 'Writing a plugin': plugins/developing.md
